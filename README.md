@@ -6,5 +6,4 @@
 - Start the machine ``` qemu-system-x86_64 -machine accel=hvf -cpu host -hda debian.qcow -m 512 -nographic ```
 
 # References
-- https://sigmaris.info/blog/2019/04/automating-debian-install-qemu/
-- https://gist.github.com/sigmaris/dc1883f782d1ff5d74252bebf852ec50
+- Original script sources: [Blog](https://sigmaris.info/blog/2019/04/automating-debian-install-qemu/) [Gist](https://gist.github.com/sigmaris/dc1883f782d1ff5d74252bebf852ec50)
