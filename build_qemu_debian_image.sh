@@ -1,4 +1,5 @@
 #!/bin/bash -e
+set -x
 
 if [ "$(uname -s)" != "Darwin" ]
 then
@@ -24,13 +25,13 @@ echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 CRYPTED_PASSWORD="$(openssl passwd -1 -salt xyz $ROOT_PASSWORD)"
 
 echo "Running simple webserver on port 4321 for host files..."
-PYTHON_PID=$(sh -c 'echo $$ ; exec >/dev/null 2>&1 ; exec python -m SimpleHTTPServer 4321' &)
+PYTHON_PID=$(sh -c 'echo $$ ; exec >/dev/null 2>&1 ; exec python3 -m http.server 4321' &)
 
 echo "Running netcat to capture syslogs..."
 NC_PID=$(sh -c 'echo $$ ; exec > ../installer.log 2>&1 ; exec nc -ul 10514' &)
 
 echo "Downloading Debian Buster x86_64 netboot installer..."
-curl --location --output netboot.tar.gz https://deb.debian.org/debian/dists/buster/main/installer-amd64/current/images/netboot/netboot.tar.gz
+test -f netboot.tar.gz ||curl --location --output netboot.tar.gz https://deb.debian.org/debian/dists/buster/main/installer-amd64/current/images/netboot/netboot.tar.gz
 mkdir -p tftpserver
 pushd tftpserver
 tar xzvf ../netboot.tar.gz
