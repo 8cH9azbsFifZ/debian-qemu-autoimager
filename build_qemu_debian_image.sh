@@ -8,6 +8,7 @@ then
 fi
 
 TEMP="$(mktemp -d build.XXXXX)"
+exec > >(tee -a $TEMP/logfile)
 cp preseed.cfg $TEMP
 pushd $TEMP
 
