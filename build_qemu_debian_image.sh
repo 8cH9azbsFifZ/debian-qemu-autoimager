@@ -10,7 +10,6 @@ fi
 TEMP="$(mktemp -d build.XXXXX)"
 exec > >(tee -a $TEMP/logfile)
 cp preseed.cfg $TEMP
-cp post-installer.sh $TEMP
 pushd $TEMP
 
 AUTHORIZED_KEYS="$(ssh-add -L)"
