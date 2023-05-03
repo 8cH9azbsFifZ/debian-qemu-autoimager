@@ -10,6 +10,7 @@ fi
 TEMP="$(mktemp -d build.XXXXX)"
 exec > >(tee -a $TEMP/logfile)
 cp preseed.cfg $TEMP
+cp post-installer.sh $TEMP
 pushd $TEMP
 
 AUTHORIZED_KEYS="$(ssh-add -L)"
@@ -29,7 +30,7 @@ echo "Running simple webserver on port 4321 for host files..."
 PYTHON_PID=$(sh -c 'echo $$ ; exec >/dev/null 2>&1 ; exec python3 -m http.server 4321' &)
 
 echo "Running netcat to capture syslogs..."
-NC_PID=$(sh -c 'echo $$ ; exec > ../installer.log 2>&1 ; exec nc -ul 10514' &)
+NC_PID=$(sh -c 'echo $$ ; exec > ./installer.log 2>&1 ; exec nc -ul 10514' &)
 
 echo "Downloading Debian Buster x86_64 netboot installer..."
 test -f netboot.tar.gz ||curl --location --output netboot.tar.gz https://deb.debian.org/debian/dists/buster/main/installer-amd64/current/images/netboot/netboot.tar.gz
@@ -49,7 +50,7 @@ EOF
 popd
 
 echo "Creating disk image for Debian Buster x86_64..."
-qemu-img create -f qcow2 ../debian.qcow 4G
+qemu-img create -f qcow2 ../debian.qcow 8G
 
 echo "Running Debian Installer..."
 qemu-system-x86_64 \

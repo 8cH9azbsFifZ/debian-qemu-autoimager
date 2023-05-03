@@ -5,5 +5,8 @@
 - Find password in build.*/logfile for root
 - Start the machine ``` qemu-system-x86_64 -machine accel=hvf -cpu host -hda debian.qcow -m 512 -nographic ```
 
+# Docs
+- Port webserver for installation: 4321
+
 # References
 - Original script sources: [Blog](https://sigmaris.info/blog/2019/04/automating-debian-install-qemu/) [Gist](https://gist.github.com/sigmaris/dc1883f782d1ff5d74252bebf852ec50)
