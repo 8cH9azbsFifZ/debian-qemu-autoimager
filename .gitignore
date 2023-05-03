@@ -2,3 +2,5 @@ debian.qcow
 installer.log
 build.*
 TEST.md
+.DS_Store
+password
