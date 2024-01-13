@@ -53,8 +53,6 @@ qemu-img create -f qcow2 ../debian.qcow 8G
 
 echo "Running Debian Installer..."
 qemu-system-x86_64 \
-	-machine accel=hvf \
-	-cpu host \
 	-hda ../debian.qcow \
 	-netdev user,id=net0,net=10.0.2.0/24,hostname=bustervm,domainname=localdomain,tftp=tftpserver,bootfile=/pxelinux.0 \
 	-device e1000,netdev=net0,mac=52:54:98:76:54:32 \
