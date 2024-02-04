@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wine
-apt-get update && apt-get -y install gettext-base tigervnc-standalone-server dbus-x11 novnc python3-websockify python3-pip wsjtx xfce4 xdotool wget tar net-tools gnupg2 procps unzip exe-thumbnailer zenity winetricks innoextract
+apt-get update && apt-get -y install alsa-utils usbutils gettext-base tigervnc-standalone-server dbus-x11 novnc python3-websockify python3-pip wsjtx xfce4 xdotool wget tar net-tools gnupg2 procps unzip exe-thumbnailer zenity winetricks innoextract
 
 echo VNC Password
 mkdir /root/.vnc 
