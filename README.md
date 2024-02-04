@@ -4,6 +4,9 @@
 - Run imager: `./build_qemu_debian_image.sh`
 - Find password in build.*/logfile for root
 - Start the machine ``` qemu-system-x86_64 -hda debian.qcow -m 512 -nographic ```
+- Start with Bridge network ```sudo qemu-system-x86_64  -nic vmnet-bridged,ifname=en0 -hda debian.qcow -m 512 -nographic ```
+
+
 
 # Docs
 - Port webserver for installation: 4321

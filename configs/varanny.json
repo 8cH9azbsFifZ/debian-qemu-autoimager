@@ -1,0 +1,31 @@
+{
+    "Port": 8273,
+    "Modems": [
+      {
+        "Name": "IC705FM",
+        "Type": "fm",
+        "Cmd": "wine",
+        "Args": "/root/.wine/drive_c/VARA FM/VARAFM.exe",
+        "Config": "/root/.wine/drive_c/VARA FM/VARAFM.ini",
+        "CatCtrl": {
+          "Port": 4532,
+          "Dialect": "hamlib",
+          "Cmd": "rigctld",
+          "Args": "-m 120 -r /dev/ttyUSB0 -s 19200"
+        }
+      },
+     
+      {
+        "Name": "IC705HF",
+        "Type": "hf",
+        "Cmd": "wine",
+        "Args": "/root/.wine/drive_c/VARA/VARA.exe",
+        "CatCtrl": {
+          "Port": 4532,
+          "Dialect": "hamlib",
+          "Cmd": "rigctld",
+          "Args": "-m 120 -r /dev/ttyUSB0 -s 19200"
+        }
+      }
+    ]
+  }
